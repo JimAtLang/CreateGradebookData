@@ -1,4 +1,4 @@
 class Assessment:
-    def __init__(self, name, count):
+    def __init__(self, name, grade):
         self.name = name
-        self.count = count
+        self.grade = grade
