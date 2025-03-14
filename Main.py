@@ -50,12 +50,20 @@ for student in students:
 for clasz in classes:
     print(clasz.name)
     f = open("data/"+clasz.name, "w")
+    for i,assessment in enumerate(clasz.assessments):
+        f.write(assessment)
+        if i<len(clasz.assessments)-1:
+            f.write(",")
+    f.write("\n")
     for student in clasz.students:
         f.write(student.first_name + " " + student.last_name + ",")
-        for assessment in clasz.assessments:
+        for i,assessment in enumerate(clasz.assessments):
             grade = -1
             while grade < 0 or grade > 100:
-                grade = gauss(75, 10)
-            f.write(str(grade) + ", ")
+                grade = round(gauss(75, 10))
+            f.write(str(grade))
+            if i < len(clasz.assessments) - 1:
+                f.write(",")
         f.write("\n")
+    f.close()
 
