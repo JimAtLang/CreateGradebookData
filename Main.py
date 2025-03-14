@@ -21,7 +21,7 @@ student_names = []
 for i in range(student_count):
     n = ""
     while not n or n in student_names:
-        n = choice(student_names)
+        n = choice(names)
     student_names.append(n)
 
 students = []
@@ -34,7 +34,8 @@ for sn in student_names:
 
 classes = []
 for subject in subjects:
-    new_class = Clasz(subject)
+    for option in subject:
+        new_class = Clasz(option)
     for i,assignment in enumerate(assignment_types):
         new_class.assessments.append(assignment+str(i+1))
     classes.append(new_class)
@@ -47,7 +48,8 @@ for student in students:
                 break
 
 for clasz in classes:
-    f = open(clasz.name, "w")
+    print(clasz.name)
+    f = open("data/"+clasz.name, "w")
     for student in clasz.students:
         f.write(student.first_name + " " + student.last_name + ",")
         for assessment in clasz.assessments:
