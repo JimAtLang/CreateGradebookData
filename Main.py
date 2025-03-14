@@ -36,11 +36,24 @@ classes = []
 for subject in subjects:
     new_class = Clasz(subject)
     for i,assignment in enumerate(assignment_types):
-        grade = -1
-        while grade < 0 or grade > 100:
-            grade = gauss(75,10)
         new_class.assessments.append(assignment+str(i+1))
     classes.append(new_class)
 
 for student in students:
-    pass
+    for clasz in student.class_names:
+        for clasy in classes:
+            if clasy.name == clasz:
+                clasy.students.append(student)
+                break
+
+for clasz in classes:
+    f = open(clasz.name, "w")
+    for student in clasz.students:
+        f.write(student.first_name + " " + student.last_name + ",")
+        for assessment in clasz.assessments:
+            grade = -1
+            while grade < 0 or grade > 100:
+                grade = gauss(75, 10)
+            f.write(str(grade) + ", ")
+        f.write("\n")
+
