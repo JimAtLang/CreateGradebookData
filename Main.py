@@ -39,10 +39,10 @@ new_class = None
 for subject in subjects:
     for option in subject:
         new_class = Clasz(option)
-    for assignment in assignment_types:
-        for i in range(assignment_types[assignment]):
-            new_class.assessments.append(assignment+str(i+1))
-    classes.append(new_class)
+        for assignment in assignment_types:
+            for i in range(assignment_types[assignment]):
+                new_class.assessments.append(assignment+str(i+1))
+        classes.append(new_class)
 
 for student in students:
     for clasz in student.class_names:
